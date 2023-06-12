@@ -26,7 +26,7 @@ import { JwtAdderInterceptor } from './Core/Interceptors/jwt-adder.interceptor';
     SharedModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,  useClass: JwtAdderInterceptor, multi: true}
