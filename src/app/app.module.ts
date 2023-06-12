@@ -10,6 +10,8 @@ import { HomeComponent } from './Public/home.component';
 import { HeaderComponent } from './Core/Layout/header.component';
 import { FooterComponent } from './Core/Layout/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtAdderInterceptor } from './Core/Interceptors/jwt-adder.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,  useClass: JwtAdderInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
